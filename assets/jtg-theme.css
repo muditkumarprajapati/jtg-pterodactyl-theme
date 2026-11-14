@@ -1,0 +1,379 @@
+/* ==========================================================================
+   JTG THEME FOR PTERODACTYL PANEL
+   Aesthetic: Void Black, Sleek Glassmorphism, Chakra Petch & Outfit Fonts
+   Fully Compatible with Blueprint & Extensions
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Outfit:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+:root {
+  /* JTG Signature Palette */
+  --jtg-bg: #030305;
+  --jtg-bg-card: #0a0a0d;
+  --jtg-bg-card-hover: #121217;
+  --jtg-bg-input: rgba(0, 0, 0, 0.6);
+  --jtg-nav-bg: rgba(10, 10, 13, 0.92);
+  
+  --jtg-border: rgba(255, 255, 255, 0.08);
+  --jtg-border-hover: rgba(255, 255, 255, 0.2);
+  --jtg-border-subtle: rgba(255, 255, 255, 0.04);
+  
+  --jtg-text: #ffffff;
+  --jtg-text-muted: #a1a1aa;
+  --jtg-text-dim: #71717a;
+  
+  --jtg-btn-bg: #ffffff;
+  --jtg-btn-text: #000000;
+  
+  --jtg-online: #22c55e;
+  --jtg-offline: #ef4444;
+  --jtg-starting: #eab308;
+  
+  /* Typography */
+  --font-brand: 'Chakra Petch', sans-serif;
+  --font-heading: 'Outfit', sans-serif;
+  --font-body: 'Inter', -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', 'IBM Plex Mono', monospace;
+}
+
+/* --------------------------------------------------------------------------
+   GLOBAL RESET & VOID BACKGROUND
+   -------------------------------------------------------------------------- */
+html, body {
+  background-color: var(--jtg-bg) !important;
+  color: var(--jtg-text) !important;
+  font-family: var(--font-body) !important;
+  min-height: 100vh;
+}
+
+/* Ambient Radial Lighting */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: 
+    radial-gradient(circle at 15% 15%, rgba(255, 255, 255, 0.02) 0%, transparent 40%),
+    radial-gradient(circle at 85% 85%, rgba(255, 255, 255, 0.015) 0%, transparent 45%),
+    radial-gradient(circle at 50% 50%, rgba(10, 10, 15, 0.8) 0%, transparent 100%);
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Sleek Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* --------------------------------------------------------------------------
+   1. AUTHENTICATION PAGES (LOGIN, REGISTER, PASSWORD RESET)
+   -------------------------------------------------------------------------- */
+div[class*="LoginContainer"],
+div[class*="ForgotPasswordContainer"],
+div[class*="ResetPasswordContainer"] {
+  min-height: 100vh !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background: var(--jtg-bg) !important;
+  padding: 24px !important;
+}
+
+/* The Auth Card */
+div[class*="LoginFormContainer"],
+div[class*="LoginContainer"] > div > div,
+div[class*="ForgotPasswordContainer"] > div,
+div[class*="ResetPasswordContainer"] > div {
+  background: var(--jtg-bg-card) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border: 1px solid var(--jtg-border) !important;
+  border-radius: 20px !important;
+  padding: 40px !important;
+  max-width: 440px !important;
+  width: 100% !important;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(255, 255, 255, 0.05) !important;
+}
+
+/* Brand Title on Login */
+div[class*="LoginFormContainer"] h2,
+div[class*="LoginContainer"] h2 {
+  font-family: var(--font-heading) !important;
+  font-size: 2rem !important;
+  font-weight: 700 !important;
+  color: #ffffff !important;
+  letter-spacing: -0.02em !important;
+  margin-bottom: 8px !important;
+  text-align: center !important;
+}
+
+div[class*="LoginFormContainer"] p,
+div[class*="LoginContainer"] p {
+  color: var(--jtg-text-muted) !important;
+  font-size: 0.95rem !important;
+  text-align: center !important;
+  margin-bottom: 24px !important;
+}
+
+/* Inputs on Auth Pages */
+div[class*="LoginFormContainer"] input,
+div[class*="LoginContainer"] input,
+div[class*="ForgotPasswordContainer"] input {
+  background: var(--jtg-bg-input) !important;
+  border: 1px solid var(--jtg-border) !important;
+  border-radius: 12px !important;
+  color: #ffffff !important;
+  font-size: 1rem !important;
+  padding: 12px 16px !important;
+  transition: all 0.25s ease !important;
+}
+
+div[class*="LoginFormContainer"] input:focus,
+div[class*="LoginContainer"] input:focus,
+div[class*="ForgotPasswordContainer"] input:focus {
+  border-color: rgba(255, 255, 255, 0.4) !important;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.1) !important;
+  outline: none !important;
+}
+
+/* Submit Button on Auth Pages */
+div[class*="LoginFormContainer"] button[type="submit"],
+div[class*="LoginContainer"] button[type="submit"],
+div[class*="ForgotPasswordContainer"] button[type="submit"] {
+  background: var(--jtg-btn-bg) !important;
+  color: var(--jtg-btn-text) !important;
+  font-family: var(--font-heading) !important;
+  font-weight: 700 !important;
+  font-size: 1rem !important;
+  border-radius: 12px !important;
+  padding: 14px 20px !important;
+  border: none !important;
+  margin-top: 16px !important;
+  cursor: pointer !important;
+  transition: all 0.25s ease !important;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4) !important;
+}
+
+div[class*="LoginFormContainer"] button[type="submit"]:hover,
+div[class*="LoginContainer"] button[type="submit"]:hover,
+div[class*="ForgotPasswordContainer"] button[type="submit"]:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.6) !important;
+  background: #f4f4f5 !important;
+}
+
+/* --------------------------------------------------------------------------
+   2. CLIENT DASHBOARD & NAVIGATION BAR (MATCHING AUTH)
+   -------------------------------------------------------------------------- */
+/* Top Header / Navigation */
+div[class*="NavigationBar__Navigation"],
+nav[class*="NavigationBar"] {
+  background: var(--jtg-nav-bg) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  border-bottom: 1px solid var(--jtg-border) !important;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.5) !important;
+  padding: 0 24px !important;
+}
+
+/* Brand Logo Text */
+div[class*="NavigationBar__Navigation"] a[href="/"] {
+  font-family: var(--font-brand) !important;
+  font-size: 1.25rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.06em !important;
+  color: #ffffff !important;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.2) !important;
+}
+
+div[class*="NavigationBar__Navigation"] a {
+  color: var(--jtg-text-muted) !important;
+  transition: all 0.2s ease !important;
+}
+
+div[class*="NavigationBar__Navigation"] a:hover {
+  color: #ffffff !important;
+}
+
+div[class*="NavigationBar__Navigation"] a.active,
+div[class*="NavigationBar__Navigation"] a[aria-current="page"] {
+  color: #ffffff !important;
+  border-bottom: 2px solid #ffffff !important;
+}
+
+/* Dashboard Title */
+div[class*="DashboardContainer"] h1 {
+  font-family: var(--font-brand) !important;
+  font-size: 1.75rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.04em !important;
+  color: #ffffff !important;
+}
+
+/* --------------------------------------------------------------------------
+   3. SERVER CARDS (JTG VOID CARDS)
+   -------------------------------------------------------------------------- */
+div[class*="ServerRow__ServerRowContainer"],
+a[href^="/server/"] {
+  background: var(--jtg-bg-card) !important;
+  backdrop-filter: blur(12px) !important;
+  border: 1px solid var(--jtg-border) !important;
+  border-radius: 14px !important;
+  margin-bottom: 14px !important;
+  padding: 18px 24px !important;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4) !important;
+}
+
+div[class*="ServerRow__ServerRowContainer"]:hover,
+a[href^="/server/"]:hover {
+  transform: translateY(-2px) !important;
+  background: var(--jtg-bg-card-hover) !important;
+  border-color: var(--jtg-border-hover) !important;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.6), 0 0 15px rgba(255, 255, 255, 0.05) !important;
+}
+
+/* Server Name in Card */
+div[class*="ServerRow__ServerRowContainer"] p[class*="ServerRow__ServerName"],
+a[href^="/server/"] p {
+  font-family: var(--font-heading) !important;
+  font-weight: 600 !important;
+  color: #ffffff !important;
+}
+
+/* Status Indicators */
+span[class*="status-online"],
+div[class*="status-online"],
+span[class*="StatusIndicatorBox"][class*="bg-green"] {
+  background-color: var(--jtg-online) !important;
+  box-shadow: 0 0 12px rgba(34, 197, 94, 0.6) !important;
+}
+
+span[class*="status-offline"],
+div[class*="status-offline"],
+span[class*="StatusIndicatorBox"][class*="bg-red"] {
+  background-color: var(--jtg-offline) !important;
+  box-shadow: 0 0 12px rgba(239, 68, 68, 0.4) !important;
+}
+
+/* --------------------------------------------------------------------------
+   4. SERVER CONSOLE & MANAGEMENT
+   -------------------------------------------------------------------------- */
+/* Subnavigation Tabs */
+div[class*="SubNavigation"] {
+  background: rgba(10, 10, 13, 0.8) !important;
+  backdrop-filter: blur(12px) !important;
+  border-bottom: 1px solid var(--jtg-border) !important;
+  border-radius: 12px !important;
+  padding: 6px 12px !important;
+  margin-bottom: 24px !important;
+}
+
+div[class*="SubNavigation"] a {
+  font-family: var(--font-mono) !important;
+  font-size: 13px !important;
+  color: var(--jtg-text-muted) !important;
+  border-radius: 8px !important;
+  padding: 8px 14px !important;
+  transition: all 0.2s ease !important;
+}
+
+div[class*="SubNavigation"] a:hover {
+  color: #ffffff !important;
+  background: rgba(255, 255, 255, 0.05) !important;
+}
+
+div[class*="SubNavigation"] a.active {
+  color: #ffffff !important;
+  background: rgba(255, 255, 255, 0.1) !important;
+  border-bottom: 2px solid #ffffff !important;
+}
+
+/* Terminal & Console */
+div[class*="Console__TerminalWrapper"],
+div[class*="terminal"] {
+  background: #050508 !important;
+  border: 1px solid var(--jtg-border) !important;
+  border-radius: 12px !important;
+  font-family: var(--font-mono) !important;
+  box-shadow: inset 0 0 25px rgba(0, 0, 0, 0.8) !important;
+  padding: 16px !important;
+}
+
+/* Resource Stat Cards (CPU, RAM, Disk) */
+div[class*="StatBlock"],
+div[class*="ServerDetailsBlock"] {
+  background: var(--jtg-bg-card) !important;
+  backdrop-filter: blur(14px) !important;
+  border: 1px solid var(--jtg-border) !important;
+  border-radius: 12px !important;
+  padding: 18px 22px !important;
+}
+
+div[class*="StatBlock"]:hover {
+  border-color: var(--jtg-border-hover) !important;
+}
+
+/* --------------------------------------------------------------------------
+   5. BUTTONS, MODALS & CONTROLS (MATCHING JTG)
+   -------------------------------------------------------------------------- */
+button[class*="Button__Primary"],
+button.btn-primary {
+  background: var(--jtg-btn-bg) !important;
+  color: var(--jtg-btn-text) !important;
+  font-family: var(--font-heading) !important;
+  font-weight: 700 !important;
+  border: none !important;
+  border-radius: 10px !important;
+  padding: 10px 20px !important;
+  transition: all 0.25s ease !important;
+}
+
+button[class*="Button__Primary"]:hover,
+button.btn-primary:hover {
+  transform: translateY(-1px) !important;
+  background: #f4f4f5 !important;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4) !important;
+}
+
+/* General Input Fields */
+input[type="text"],
+input[type="password"],
+input[type="number"],
+input[type="email"],
+textarea,
+select {
+  background: rgba(10, 10, 13, 0.8) !important;
+  border: 1px solid var(--jtg-border) !important;
+  border-radius: 10px !important;
+  color: #ffffff !important;
+  font-family: var(--font-body) !important;
+  padding: 10px 14px !important;
+  transition: all 0.2s ease !important;
+}
+
+input:focus, textarea:focus, select:focus {
+  border-color: rgba(255, 255, 255, 0.3) !important;
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.08) !important;
+  outline: none !important;
+}
+
+/* Modals & Dialogs */
+div[class*="Modal__ModalWrapper"],
+div[role="dialog"] {
+  background: rgba(10, 10, 13, 0.95) !important;
+  backdrop-filter: blur(25px) !important;
+  border: 1px solid var(--jtg-border) !important;
+  border-radius: 16px !important;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8) !important;
+}
