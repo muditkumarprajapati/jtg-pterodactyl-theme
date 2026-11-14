@@ -77,7 +77,7 @@ body::before {
 /* --------------------------------------------------------------------------
    1. AUTHENTICATION PAGES (LOGIN, REGISTER, FORGOT PASSWORD)
    -------------------------------------------------------------------------- */
-/* Main page wrapper */
+/* Center the whole auth screen */
 div[class*="LoginContainer"],
 div[class*="ForgotPasswordContainer"],
 div[class*="ResetPasswordContainer"] {
@@ -87,11 +87,11 @@ div[class*="ResetPasswordContainer"] {
   align-items: center !important;
   justify-content: center !important;
   background: var(--jtg-bg) !important;
-  padding: 24px !important;
-  margin: 0 auto !important;
+  padding: 20px !important;
+  box-sizing: border-box !important;
 }
 
-/* Strip borders and backgrounds from intermediate wrappers to stop nested boxes */
+/* Strip any wrapper backgrounds/borders */
 div[class*="LoginContainer"] > div,
 div[class*="ForgotPasswordContainer"] > div,
 div[class*="ResetPasswordContainer"] > div,
@@ -105,87 +105,94 @@ div[class*="LoginFormContainer"] {
   padding: 0 !important;
 }
 
-/* JTG Brand Header above Card */
-div[class*="LoginFormContainer"]::before,
-div[class*="ForgotPasswordContainer"]::before,
-div[class*="ResetPasswordContainer"]::before {
-  content: 'JTG PANEL';
-  display: block;
-  font-family: var(--font-brand);
-  font-size: 1.6rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  color: #ffffff;
-  text-align: center;
-  margin-bottom: 24px;
-  text-shadow: 0 0 20px rgba(255, 255, 255, 0.25);
-}
-
-/* The actual Card (targets Pterodactyl's inner form container) */
-div[class*="LoginFormContainer"] form > div,
-div[class*="LoginFormContainer"] div.md\:flex,
-div[class*="LoginFormContainer"] div[class*="bg-neutral-900"],
-div[class*="ForgotPasswordContainer"] form > div,
-div[class*="ResetPasswordContainer"] form > div {
-  background: var(--jtg-bg-card) !important;
-  backdrop-filter: blur(20px) !important;
-  -webkit-backdrop-filter: blur(20px) !important;
-  border: 1px solid var(--jtg-border) !important;
-  border-radius: 20px !important;
-  padding: 36px 32px !important;
-  box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255, 255, 255, 0.05) !important;
-  display: flex !important;
-  flex-direction: column !important;
-  width: 100% !important;
-  box-sizing: border-box !important;
-}
-
-/* Hide Pterodactyl's default weird split left-side column that stretches the card */
-div[class*="LoginFormContainer"] div.flex-none,
-div[class*="LoginFormContainer"] div[class*="flex-none"] {
+/* Hide any mascots or Pterodactyl SVGs */
+div[class*="LoginContainer"] img,
+div[class*="LoginFormContainer"] img,
+div[class*="ForgotPasswordContainer"] img,
+div[class*="ResetPasswordContainer"] img {
   display: none !important;
 }
 
-/* Inputs wrapper becomes 100% width cleanly */
-div[class*="LoginFormContainer"] div.flex-1,
-div[class*="LoginFormContainer"] div[class*="flex-1"] {
+/* The Single Clean JTG Card: Applied ONLY to the Form */
+div[class*="LoginContainer"] form,
+div[class*="ForgotPasswordContainer"] form,
+div[class*="ResetPasswordContainer"] form {
+  background: var(--jtg-bg-card) !important;
+  backdrop-filter: blur(25px) !important;
+  -webkit-backdrop-filter: blur(25px) !important;
+  border: 1px solid var(--jtg-border) !important;
+  border-radius: 20px !important;
+  padding: 38px 32px !important;
+  box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.9), 0 0 0 1px rgba(255, 255, 255, 0.05) !important;
   width: 100% !important;
-  flex: 1 1 100% !important;
-  margin: 0 !important;
-  padding: 0 !important;
+  max-width: 420px !important;
+  box-sizing: border-box !important;
+  display: flex !important;
+  flex-direction: column !important;
+  margin: 0 auto !important;
 }
 
-/* Title on Auth Card ("Login to Continue") */
-div[class*="LoginFormContainer"] h2,
+/* Eliminate ANY nested cards or intermediate boxes inside the form */
+div[class*="LoginContainer"] form div,
+div[class*="ForgotPasswordContainer"] form div,
+div[class*="ResetPasswordContainer"] form div {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  width: 100% !important;
+  max-width: none !important;
+}
+
+/* Title on Auth Card with JTG Header */
 div[class*="LoginContainer"] h2,
-div[class*="ForgotPasswordContainer"] h2 {
+div[class*="ForgotPasswordContainer"] h2,
+div[class*="ResetPasswordContainer"] h2 {
   font-family: var(--font-heading) !important;
-  font-size: 1.65rem !important;
-  font-weight: 700 !important;
-  color: #ffffff !important;
-  letter-spacing: -0.02em !important;
+  font-size: 1.35rem !important;
+  font-weight: 600 !important;
+  color: var(--jtg-text-muted) !important;
+  letter-spacing: -0.01em !important;
   margin-bottom: 24px !important;
   text-align: center !important;
+  display: block !important;
+}
+
+div[class*="LoginContainer"] h2::before,
+div[class*="ForgotPasswordContainer"] h2::before,
+div[class*="ResetPasswordContainer"] h2::before {
+  content: 'JTG PANEL';
+  display: block;
+  font-family: var(--font-brand);
+  font-size: 1.85rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: #ffffff;
+  text-align: center;
+  margin-bottom: 10px;
+  text-shadow: 0 0 25px rgba(255, 255, 255, 0.35);
 }
 
 /* Input Labels */
-div[class*="LoginFormContainer"] label,
-div[class*="LoginContainer"] label,
-div[class*="ForgotPasswordContainer"] label {
+div[class*="LoginContainer"] form label,
+div[class*="ForgotPasswordContainer"] form label {
   font-family: var(--font-heading) !important;
-  font-size: 0.8rem !important;
+  font-size: 0.75rem !important;
   font-weight: 600 !important;
-  letter-spacing: 0.05em !important;
+  letter-spacing: 0.06em !important;
   color: var(--jtg-text-muted) !important;
   text-transform: uppercase !important;
-  margin-bottom: 8px !important;
+  margin-top: 14px !important;
+  margin-bottom: 6px !important;
   display: block !important;
 }
 
 /* Auth Input Fields */
-div[class*="LoginFormContainer"] input,
-div[class*="LoginContainer"] input,
-div[class*="ForgotPasswordContainer"] input {
+div[class*="LoginContainer"] form input,
+div[class*="ForgotPasswordContainer"] form input,
+div[class*="ResetPasswordContainer"] form input {
   width: 100% !important;
   background: var(--jtg-bg-input) !important;
   border: 1px solid var(--jtg-border) !important;
@@ -195,12 +202,12 @@ div[class*="ForgotPasswordContainer"] input {
   padding: 12px 16px !important;
   transition: all 0.25s ease !important;
   box-sizing: border-box !important;
-  margin-bottom: 16px !important;
+  display: block !important;
 }
 
-div[class*="LoginFormContainer"] input:focus,
-div[class*="LoginContainer"] input:focus,
-div[class*="ForgotPasswordContainer"] input:focus {
+div[class*="LoginContainer"] form input:focus,
+div[class*="ForgotPasswordContainer"] form input:focus,
+div[class*="ResetPasswordContainer"] form input:focus {
   border-color: var(--jtg-border-focus) !important;
   box-shadow: 0 0 15px rgba(255, 255, 255, 0.12) !important;
   background: rgba(0, 0, 0, 0.85) !important;
@@ -208,9 +215,9 @@ div[class*="ForgotPasswordContainer"] input:focus {
 }
 
 /* Auth Submit Button (JTG White Pill Button) */
-div[class*="LoginFormContainer"] button[type="submit"],
-div[class*="LoginContainer"] button[type="submit"],
-div[class*="ForgotPasswordContainer"] button[type="submit"] {
+div[class*="LoginContainer"] form button[type="submit"],
+div[class*="ForgotPasswordContainer"] form button[type="submit"],
+div[class*="ResetPasswordContainer"] form button[type="submit"] {
   width: 100% !important;
   background: var(--jtg-btn-bg) !important;
   color: var(--jtg-btn-text) !important;
@@ -220,31 +227,35 @@ div[class*="ForgotPasswordContainer"] button[type="submit"] {
   border-radius: 12px !important;
   padding: 13px 20px !important;
   border: none !important;
-  margin-top: 8px !important;
+  margin-top: 22px !important;
   cursor: pointer !important;
   transition: all 0.25s ease !important;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5) !important;
+  display: block !important;
 }
 
-div[class*="LoginFormContainer"] button[type="submit"]:hover,
-div[class*="LoginContainer"] button[type="submit"]:hover,
-div[class*="ForgotPasswordContainer"] button[type="submit"]:hover {
+div[class*="LoginContainer"] form button[type="submit"]:hover,
+div[class*="ForgotPasswordContainer"] form button[type="submit"]:hover,
+div[class*="ResetPasswordContainer"] form button[type="submit"]:hover {
   transform: translateY(-2px) !important;
   background: #f4f4f5 !important;
   box-shadow: 0 12px 28px rgba(0, 0, 0, 0.7) !important;
 }
 
-/* Links */
-div[class*="LoginFormContainer"] a,
-div[class*="LoginContainer"] a {
+/* Links (Forgot Password, etc.) */
+div[class*="LoginContainer"] form a,
+div[class*="ForgotPasswordContainer"] form a {
   color: var(--jtg-text-dim) !important;
   font-size: 0.85rem !important;
   transition: color 0.2s ease !important;
   text-decoration: none !important;
+  text-align: center !important;
+  margin-top: 14px !important;
+  display: inline-block !important;
 }
 
-div[class*="LoginFormContainer"] a:hover,
-div[class*="LoginContainer"] a:hover {
+div[class*="LoginContainer"] form a:hover,
+div[class*="ForgotPasswordContainer"] form a:hover {
   color: #ffffff !important;
 }
 
