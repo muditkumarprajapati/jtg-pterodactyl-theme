@@ -1,7 +1,7 @@
 /* ==========================================================================
    JTG THEME FOR PTERODACTYL PANEL
-   Aesthetic: Void Black, Sleek Glassmorphism, Chakra Petch & Outfit Fonts
-   Fully Compatible with Blueprint & Extensions
+   Aesthetic: Void Black (#030305), Glassmorphism (#0a0a0d), Outfit & Chakra Fonts
+   100% Compatible with Blueprint Extensions
    ========================================================================== */
 
 @import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Outfit:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
@@ -11,12 +11,12 @@
   --jtg-bg: #030305;
   --jtg-bg-card: #0a0a0d;
   --jtg-bg-card-hover: #121217;
-  --jtg-bg-input: rgba(0, 0, 0, 0.6);
-  --jtg-nav-bg: rgba(10, 10, 13, 0.92);
+  --jtg-bg-input: rgba(0, 0, 0, 0.65);
+  --jtg-nav-bg: rgba(10, 10, 13, 0.94);
   
   --jtg-border: rgba(255, 255, 255, 0.08);
-  --jtg-border-hover: rgba(255, 255, 255, 0.2);
-  --jtg-border-subtle: rgba(255, 255, 255, 0.04);
+  --jtg-border-hover: rgba(255, 255, 255, 0.22);
+  --jtg-border-focus: rgba(255, 255, 255, 0.45);
   
   --jtg-text: #ffffff;
   --jtg-text-muted: #a1a1aa;
@@ -46,7 +46,6 @@ html, body {
   min-height: 100vh;
 }
 
-/* Ambient Radial Lighting */
 body::before {
   content: '';
   position: fixed;
@@ -76,59 +75,109 @@ body::before {
 }
 
 /* --------------------------------------------------------------------------
-   1. AUTHENTICATION PAGES (LOGIN, REGISTER, PASSWORD RESET)
+   1. AUTHENTICATION PAGES (LOGIN, REGISTER, FORGOT PASSWORD)
    -------------------------------------------------------------------------- */
+/* Main page wrapper */
 div[class*="LoginContainer"],
 div[class*="ForgotPasswordContainer"],
 div[class*="ResetPasswordContainer"] {
   min-height: 100vh !important;
   display: flex !important;
+  flex-direction: column !important;
   align-items: center !important;
   justify-content: center !important;
   background: var(--jtg-bg) !important;
   padding: 24px !important;
+  margin: 0 auto !important;
 }
 
-/* The Auth Card */
-div[class*="LoginFormContainer"],
-div[class*="LoginContainer"] > div > div,
+/* Clear outer intermediate container boxes */
+div[class*="LoginContainer"] > div,
 div[class*="ForgotPasswordContainer"] > div,
 div[class*="ResetPasswordContainer"] > div {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  width: 100% !important;
+  max-width: 440px !important;
+  margin: 0 auto !important;
+  padding: 0 !important;
+}
+
+/* JTG Brand Header above the Card */
+div[class*="LoginFormContainer"]::before {
+  content: 'JTG PANEL';
+  display: block;
+  font-family: var(--font-brand);
+  font-size: 1.6rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #ffffff;
+  text-align: center;
+  margin-bottom: 24px;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.25);
+}
+
+/* Pterodactyl default split container wrapper */
+div[class*="LoginFormContainer"] > div {
   background: var(--jtg-bg-card) !important;
   backdrop-filter: blur(20px) !important;
   -webkit-backdrop-filter: blur(20px) !important;
   border: 1px solid var(--jtg-border) !important;
   border-radius: 20px !important;
-  padding: 40px !important;
-  max-width: 440px !important;
-  width: 100% !important;
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(255, 255, 255, 0.05) !important;
+  padding: 36px 32px !important;
+  box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255, 255, 255, 0.05) !important;
+  display: flex !important;
+  flex-direction: column !important;
 }
 
-/* Brand Title on Login */
+/* Hide Pterodactyl's default weird split left-side logo block that creates vertical stretching */
+div[class*="LoginFormContainer"] > div > div.flex-none,
+div[class*="LoginFormContainer"] > div > div[class*="flex-none"] {
+  display: none !important;
+}
+
+/* Ensure the inputs block takes full width without split column distortion */
+div[class*="LoginFormContainer"] > div > div.flex-1,
+div[class*="LoginFormContainer"] > div > div[class*="flex-1"] {
+  width: 100% !important;
+  flex: 1 1 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Title on Auth Card ("Login to Continue") */
 div[class*="LoginFormContainer"] h2,
-div[class*="LoginContainer"] h2 {
+div[class*="LoginContainer"] h2,
+div[class*="ForgotPasswordContainer"] h2 {
   font-family: var(--font-heading) !important;
-  font-size: 2rem !important;
+  font-size: 1.65rem !important;
   font-weight: 700 !important;
   color: #ffffff !important;
   letter-spacing: -0.02em !important;
-  margin-bottom: 8px !important;
+  margin-bottom: 20px !important;
   text-align: center !important;
 }
 
-div[class*="LoginFormContainer"] p,
-div[class*="LoginContainer"] p {
+/* Input Labels */
+div[class*="LoginFormContainer"] label,
+div[class*="LoginContainer"] label,
+div[class*="ForgotPasswordContainer"] label {
+  font-family: var(--font-heading) !important;
+  font-size: 0.8rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.05em !important;
   color: var(--jtg-text-muted) !important;
-  font-size: 0.95rem !important;
-  text-align: center !important;
-  margin-bottom: 24px !important;
+  text-transform: uppercase !important;
+  margin-bottom: 6px !important;
+  display: block !important;
 }
 
-/* Inputs on Auth Pages */
+/* Auth Input Fields */
 div[class*="LoginFormContainer"] input,
 div[class*="LoginContainer"] input,
 div[class*="ForgotPasswordContainer"] input {
+  width: 100% !important;
   background: var(--jtg-bg-input) !important;
   border: 1px solid var(--jtg-border) !important;
   border-radius: 12px !important;
@@ -136,40 +185,58 @@ div[class*="ForgotPasswordContainer"] input {
   font-size: 1rem !important;
   padding: 12px 16px !important;
   transition: all 0.25s ease !important;
+  box-sizing: border-box !important;
+  margin-bottom: 16px !important;
 }
 
 div[class*="LoginFormContainer"] input:focus,
 div[class*="LoginContainer"] input:focus,
 div[class*="ForgotPasswordContainer"] input:focus {
-  border-color: rgba(255, 255, 255, 0.4) !important;
-  box-shadow: 0 0 15px rgba(255, 255, 255, 0.1) !important;
+  border-color: var(--jtg-border-focus) !important;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.12) !important;
+  background: rgba(0, 0, 0, 0.85) !important;
   outline: none !important;
 }
 
-/* Submit Button on Auth Pages */
+/* Auth Submit Button (JTG White Pill Button) */
 div[class*="LoginFormContainer"] button[type="submit"],
 div[class*="LoginContainer"] button[type="submit"],
 div[class*="ForgotPasswordContainer"] button[type="submit"] {
+  width: 100% !important;
   background: var(--jtg-btn-bg) !important;
   color: var(--jtg-btn-text) !important;
   font-family: var(--font-heading) !important;
   font-weight: 700 !important;
   font-size: 1rem !important;
   border-radius: 12px !important;
-  padding: 14px 20px !important;
+  padding: 13px 20px !important;
   border: none !important;
-  margin-top: 16px !important;
+  margin-top: 8px !important;
   cursor: pointer !important;
   transition: all 0.25s ease !important;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4) !important;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5) !important;
 }
 
 div[class*="LoginFormContainer"] button[type="submit"]:hover,
 div[class*="LoginContainer"] button[type="submit"]:hover,
 div[class*="ForgotPasswordContainer"] button[type="submit"]:hover {
   transform: translateY(-2px) !important;
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.6) !important;
   background: #f4f4f5 !important;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.7) !important;
+}
+
+/* Forgot password link */
+div[class*="LoginFormContainer"] a,
+div[class*="LoginContainer"] a {
+  color: var(--jtg-text-dim) !important;
+  font-size: 0.85rem !important;
+  transition: color 0.2s ease !important;
+  text-decoration: none !important;
+}
+
+div[class*="LoginFormContainer"] a:hover,
+div[class*="LoginContainer"] a:hover {
+  color: #ffffff !important;
 }
 
 /* --------------------------------------------------------------------------
@@ -186,7 +253,7 @@ nav[class*="NavigationBar"] {
   padding: 0 24px !important;
 }
 
-/* Brand Logo Text */
+/* Brand Logo Text in Dashboard */
 div[class*="NavigationBar__Navigation"] a[href="/"] {
   font-family: var(--font-brand) !important;
   font-size: 1.25rem !important;
@@ -325,7 +392,7 @@ div[class*="StatBlock"]:hover {
 }
 
 /* --------------------------------------------------------------------------
-   5. BUTTONS, MODALS & CONTROLS (MATCHING JTG)
+   5. GENERAL BUTTONS, MODALS & INPUTS (MATCHING JTG)
    -------------------------------------------------------------------------- */
 button[class*="Button__Primary"],
 button.btn-primary {
@@ -346,7 +413,6 @@ button.btn-primary:hover {
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4) !important;
 }
 
-/* General Input Fields */
 input[type="text"],
 input[type="password"],
 input[type="number"],
