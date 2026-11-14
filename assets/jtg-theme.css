@@ -13,22 +13,22 @@
   --jtg-bg-card-hover: #121217;
   --jtg-bg-input: rgba(0, 0, 0, 0.65);
   --jtg-nav-bg: rgba(10, 10, 13, 0.94);
-  
+
   --jtg-border: rgba(255, 255, 255, 0.08);
   --jtg-border-hover: rgba(255, 255, 255, 0.22);
   --jtg-border-focus: rgba(255, 255, 255, 0.45);
-  
+
   --jtg-text: #ffffff;
   --jtg-text-muted: #a1a1aa;
   --jtg-text-dim: #71717a;
-  
+
   --jtg-btn-bg: #ffffff;
   --jtg-btn-text: #000000;
-  
+
   --jtg-online: #22c55e;
   --jtg-offline: #ef4444;
   --jtg-starting: #eab308;
-  
+
   /* Typography */
   --font-brand: 'Chakra Petch', sans-serif;
   --font-heading: 'Outfit', sans-serif;
@@ -39,7 +39,8 @@
 /* --------------------------------------------------------------------------
    GLOBAL RESET & VOID BACKGROUND
    -------------------------------------------------------------------------- */
-html, body {
+html,
+body {
   background-color: var(--jtg-bg) !important;
   color: var(--jtg-text) !important;
   font-family: var(--font-body) !important;
@@ -50,7 +51,7 @@ body::before {
   content: '';
   position: fixed;
   inset: 0;
-  background: 
+  background:
     radial-gradient(circle at 15% 15%, rgba(255, 255, 255, 0.02) 0%, transparent 40%),
     radial-gradient(circle at 85% 85%, rgba(255, 255, 255, 0.015) 0%, transparent 45%),
     radial-gradient(circle at 50% 50%, rgba(10, 10, 15, 0.8) 0%, transparent 100%);
@@ -63,13 +64,16 @@ body::before {
   width: 6px;
   height: 6px;
 }
+
 ::-webkit-scrollbar-track {
   background: transparent;
 }
+
 ::-webkit-scrollbar-thumb {
   background: rgba(255, 255, 255, 0.15);
   border-radius: 999px;
 }
+
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(255, 255, 255, 0.3);
 }
@@ -92,9 +96,9 @@ div[class*="ResetPasswordContainer"] {
 }
 
 /* Strip any wrapper backgrounds/borders */
-div[class*="LoginContainer"] > div,
-div[class*="ForgotPasswordContainer"] > div,
-div[class*="ResetPasswordContainer"] > div,
+div[class*="LoginContainer"]>div,
+div[class*="ForgotPasswordContainer"]>div,
+div[class*="ResetPasswordContainer"]>div,
 div[class*="LoginFormContainer"] {
   background: transparent !important;
   border: none !important;
@@ -448,7 +452,9 @@ select {
   transition: all 0.2s ease !important;
 }
 
-input:focus, textarea:focus, select:focus {
+input:focus,
+textarea:focus,
+select:focus {
   border-color: rgba(255, 255, 255, 0.3) !important;
   box-shadow: 0 0 12px rgba(255, 255, 255, 0.08) !important;
   outline: none !important;
